@@ -105,7 +105,7 @@ Launch `index.html` in your browser or use a local development server.
 
 ## 📸 Screenshots
 
-> Screenshots will be added soon.
+![alt text](image.png)
 
 ---
 
