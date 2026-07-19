@@ -18,8 +18,7 @@ const CONFIG = {
   skills: ["JavaScript","React","Node.js","Python","UI/UX Design","SQL","Figma","Coffee-fueled debugging"],
   funFacts: [
     "Built my first website at 14 — it had a MIDI file that auto-played. No regrets.",
-    "Currently learning: [ your current thing ]",
-    "Can solve a Rubik's cube in under 2 minutes.",
+    "Currently learning: ML",
     "Will talk about esports and cricket for way too long if you let me."
   ],
   resumeUrl: "#",
