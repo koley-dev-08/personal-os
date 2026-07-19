@@ -1,0 +1,14 @@
+@media (max-width:720px){
+  .icon-grid{top:10px; left:10px; gap:14px;}
+  .desk-icon{width:66px;}
+  .desk-icon .glyph{width:44px; height:44px; font-size:19px;}
+@media (prefers-reduced-motion: reduce){
+  .blob, .cursor-blink{animation:none !important;}
+@media(max-width:720px){#topbar{top:8px;width:calc(100vw - 16px);}.icon-grid{top:8px;left:8px;gap:8px;}.hud{display:none;}#desktop{inset:60px 0 72px;}.desk-icon{width:68px;}.desk-icon .glyph{width:44px;height:44px;}.window{border-radius:19px!important;}.win-body{padding:21px 18px;}.h-title{font-size:25px;}#dock-wrap{width:100%;bottom:9px;display:flex;justify-content:center;overflow-x:auto;padding:0 8px;}#dock{gap:4px;padding:6px;}.dock-btn{width:40px;height:40px;font-size:17px;flex:none;}.dock-btn:nth-child(7){display:none;}.top-actions{display:none;}.notify-panel{right:8px;top:60px;width:calc(100vw - 16px);}.map-wrap{flex-direction:column;}.map-sidebar{width:100%;display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;padding-bottom:4px;}.map-entry{min-width:150px;margin:0;}.map-canvas-wrap{min-height:240px;}.proj-grid{grid-template-columns:1fr;}}
+
+/* ============================================================
+@media(max-width:720px){#topbar{height:38px;}.window{border-radius:2px!important;}.hud{display:none;}#dock{border-radius:2px;}.dock-btn{width:40px;height:40px;}.h-title{font-size:27px;}}
+
+@media(max-width:720px){.home-search{top:12px;width:calc(100vw - 165px);left:auto;right:9px;transform:none;}.home-search:hover{transform:translateY(-1px)}.home-search kbd{display:none;}.home-player{display:none;}.wallpaper-switcher{right:9px;bottom:5px;padding:7px 9px;}.wallpaper-label{display:none;}.wallpaper-switcher>div:last-child{margin:0;}.wallpaper-swatch{width:14px;height:14px;}}
+
+@media(max-width:720px){.window.focused{box-shadow:4px 5px 0 rgba(70,44,23,.25),0 15px 28px -18px rgba(43,28,13,.35);}.traffic button{width:15px;height:15px;}.win-titlebar{padding:12px 13px;}.resize-handle{width:24px;height:24px;}.snap-left #snap-guide,.snap-right #snap-guide{width:0;opacity:0;}.snap-max #snap-guide{top:47px;bottom:74px;}}

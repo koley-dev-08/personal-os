@@ -1,0 +1,18 @@
+   TOP BAR — thin floating glass strip, dot-matrix clock, red live-dot
+   ============================================================ */
+#topbar{position:fixed; top:0; left:0; right:0; height:42px; z-index:60;
+  display:flex; align-items:center; justify-content:space-between; padding:0 18px;
+  background:var(--glass); backdrop-filter:blur(30px) saturate(180%); -webkit-backdrop-filter:blur(30px) saturate(180%);
+  border-bottom:1px solid var(--hairline); font-family:var(--font-body); font-size:13px;}
+#topbar .brand{display:flex; align-items:center; gap:9px; font-weight:700; letter-spacing:.2px; font-family:var(--font-display); color:var(--ink);}
+#topbar .brand .dot{width:7px; height:7px; border-radius:50%; background:var(--red); box-shadow:0 0 0 4px var(--red-dim); animation:pulse-dot 2.4s ease-in-out infinite;}
+#topbar .right{display:flex; align-items:center; gap:14px; color:var(--ink-soft);}
+#topbar button.icon-btn{background:none; border:1px solid transparent; color:var(--ink-soft); font-size:11.5px; font-family:var(--font-dot); letter-spacing:.4px; display:flex; align-items:center; gap:6px; padding:5px 10px; border-radius:100px; transition:.2s;}
+#topbar button.icon-btn:hover{background:var(--glass-strong); border-color:var(--hairline); color:var(--ink);}
+#clock{color:var(--ink); font-weight:400; font-family:var(--font-dot); font-size:14px; letter-spacing:1px;}
+
+/* ============================================================
+#topbar{top:12px;left:50%;right:auto;transform:translateX(-50%);height:44px;width:min(920px,calc(100vw - 32px));border:1px solid var(--glass-border);border-radius:15px;background:rgba(10,14,34,.58);box-shadow:0 16px 50px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.07);padding:0 14px;}
+#topbar .brand{font-size:12px;letter-spacing:1.1px;color:var(--ink);}#topbar .brand .dot{background:#67e7ce;box-shadow:0 0 0 4px rgba(103,231,206,.13);}
+#topbar .right{gap:8px;}#topbar button.icon-btn{color:var(--ink-soft);font-size:10px;background:rgba(255,255,255,.035);border-color:var(--hairline);padding:6px 9px;}#topbar button.icon-btn:hover{color:#fff;background:rgba(255,255,255,.1);}#clock{color:#fff;font:11px var(--font-mono);letter-spacing:1.2px;padding-left:4px;}
+#topbar{top:0;width:100%;height:40px;border:0;border-bottom:1px solid rgba(64,42,22,.45);border-radius:0;background:rgba(249,240,214,.84);box-shadow:0 2px 0 rgba(255,255,255,.65) inset,0 2px 8px rgba(65,41,21,.12);padding:0 18px;}#topbar .brand{font:700 11px var(--font-mono);letter-spacing:1.8px;color:#342719;}#topbar .brand .dot{width:6px;height:6px;border-radius:0;background:#aa4535;box-shadow:none;animation:none;}#topbar .right{gap:8px;}#topbar button.icon-btn{color:#5a412d;background:transparent;border-color:transparent;border-radius:0;font:10px var(--font-mono);letter-spacing:.4px;padding:5px 7px;}#topbar button.icon-btn:hover{background:#ebd9ad;color:#2b2118;}#clock{color:#382b1d;font-family:var(--font-mono);font-size:10px;letter-spacing:.5px;}

@@ -1,0 +1,43 @@
+   DOCK — magnification handled in JS, styling here
+   ============================================================ */
+#dock-wrap{position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:70;}
+#dock{display:flex; align-items:flex-end; gap:8px; padding:10px; background:var(--glass); backdrop-filter:blur(34px) saturate(180%); -webkit-backdrop-filter:blur(34px) saturate(180%);
+  border:1px solid var(--glass-border); border-radius:26px; box-shadow:0 1px 0 rgba(255,255,255,.85) inset, 0 20px 50px -12px var(--glass-shadow);}
+.dock-btn{position:relative; width:52px; height:52px; border-radius:16px; border:1px solid var(--hairline); background:var(--glass-strong);
+  display:flex; align-items:center; justify-content:center; font-size:22px; color:var(--ink); transition:background .18s, border-color .18s;
+  transform-origin:bottom center; will-change:transform;}
+.dock-btn:hover{background:#fff; border-color:rgba(28,28,30,.16);}
+.dock-btn.active::after{content:''; position:absolute; bottom:-8px; left:50%; transform:translateX(-50%); width:4px; height:4px; border-radius:50%; background:var(--red); box-shadow:0 0 6px var(--red);}
+.dock-btn .tip{position:absolute; bottom:66px; left:50%; transform:translateX(-50%); background:var(--ink); color:#fff; border:1px solid rgba(255,255,255,.1); padding:4px 10px; border-radius:8px; font-size:10.5px; font-family:var(--font-dot);
+  white-space:nowrap; opacity:0; pointer-events:none; transition:.15s;}
+.dock-btn:hover .tip{opacity:1; transform:translateX(-50%) translateY(-4px);}
+
+/* ============================================================
+  #dock{gap:6px; padding:8px;}
+  .dock-btn{width:44px; height:44px; font-size:18px;}
+  .about-grid{flex-direction:column;}
+}
+  .window, .dock-btn, .desk-icon{transition:none !important;}
+}
+
+/* ============================================================
+   LUMEN REFINEMENT — a single dark spatial language layered over
+   the original applications. Existing app hooks remain unchanged.
+   ============================================================ */
+:root{
+  --bg-1:#060814; --bg-2:#0c1024; --mesh-a:#263b7a; --mesh-b:#5c2369;
+  --mesh-c:#0d6c70; --mesh-d:#9d5c27; --glass:rgba(12,16,36,.56);
+  --glass-strong:rgba(22,28,56,.78); --glass-border:rgba(191,210,255,.17);
+  --glass-shadow:rgba(0,0,0,.55); --hairline:rgba(195,211,255,.14);
+  --ink:#f4f7ff; --ink-soft:#b3bfdc; --ink-dim:#6e7b9b; --red:#8b7bff;
+  --red-dim:rgba(139,123,255,.19); --radius-lg:24px; --radius-md:16px;
+}
+body{background:#060814;color:var(--ink);letter-spacing:-.01em;}
+body::before{content:'';position:fixed;inset:0;z-index:2;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,.045),transparent 22%,transparent 76%,rgba(130,102,255,.09));}
+#dock-wrap{bottom:17px;}#dock{gap:7px;padding:9px;background:rgba(11,15,34,.7);border-color:rgba(203,215,255,.17);border-radius:19px;box-shadow:inset 0 1px rgba(255,255,255,.1),0 24px 44px -18px rgba(0,0,0,.74);}.dock-btn{width:48px;height:48px;border-radius:14px;color:#ecf1ff;background:linear-gradient(145deg,rgba(68,79,134,.54),rgba(15,20,44,.8));border-color:rgba(187,203,255,.13);}.dock-btn:hover{background:linear-gradient(145deg,rgba(109,105,235,.75),rgba(33,36,78,.95));border-color:rgba(207,211,255,.4);}.dock-btn.active::after{background:#89f4db;box-shadow:0 0 9px #89f4db;}.dock-btn .tip{background:#151b38;color:#eef3ff;border-color:rgba(255,255,255,.1);font-family:var(--font-mono);}
+#toast{bottom:94px;background:#171d3c;border-color:rgba(179,193,255,.18);box-shadow:0 18px 38px rgba(0,0,0,.38);}
+
+#dock-wrap{bottom:12px;}#dock{gap:4px;padding:7px 9px;background:#35271b;border:1px solid #24190f;border-radius:2px;box-shadow:4px 5px 0 rgba(66,42,20,.28),inset 0 1px rgba(255,255,255,.13);}.dock-btn{width:46px;height:46px;border-radius:1px;color:#39281a;background:linear-gradient(135deg,#f2dfa7,#caa96d);border-color:#9a7444;box-shadow:inset 1px 1px rgba(255,255,255,.6);}.dock-btn:hover{background:linear-gradient(135deg,#f9ebbd,#d9b977);border-color:#f7e0a0;}.dock-btn.active::after{border-radius:0;background:#d77a55;box-shadow:none;}.dock-btn .tip{border-radius:1px;background:#342519;color:#f8edcf;border-color:#896342;font-family:var(--font-mono);}.resize-handle::before{border-color:#8b6743;}
+#toast{border-radius:1px;background:#3b2b1e;color:#faebc6;border-color:#705034;box-shadow:4px 5px 0 rgba(74,45,23,.22);font-family:var(--font-mono);}
+.hud{right:28px;top:24px;width:250px;}.hud-card{border-radius:2px;border-color:#a37d4e;background:rgba(251,241,211,.7);box-shadow:3px 4px 0 rgba(87,55,24,.16),inset 1px 1px rgba(255,255,255,.7);}.hud-kicker{font-family:var(--font-mono);color:#9d4234;}.hud-value{font-family:var(--font-display);font-weight:400;color:#342518;letter-spacing:0;}.hud-meta{font-family:var(--font-mono);color:#806449;}.signal i{border-radius:0;background:#8a975c;box-shadow:none;}.hud-orb{border-color:#b18c5c;box-shadow:inset 0 0 24px rgba(174,118,58,.2);}.hud-orb::before{border-color:#aa4535}.hud-orb::after{background:#aa4535;box-shadow:0 0 10px rgba(170,69,53,.55);}
+.top-action{border-radius:1px;border-color:#b49765;background:transparent;color:#5a412d;}.top-action:hover{background:#ead6a4;color:#2b2118;}.search-layer{background:rgba(64,43,22,.28);backdrop-filter:blur(4px);}.command-box{border-radius:2px;border-color:#6c4d2c;background:#f8edcf;box-shadow:7px 9px 0 rgba(60,37,18,.3);}.command-input{border-bottom-color:#b89968;}.command-input span{color:#9d4234;}.command-input input{color:#362518;font-family:var(--font-display);}.command-input kbd{border-radius:1px;color:#765b42;border-color:#b89c6d;}.command-results{background:#f5e4bd;}.command-result{border-radius:1px;color:#39291c;}.command-result:hover,.command-result.focused{background:#ead1a0;}.command-result b{font-family:var(--font-display);}.command-result small{font-family:var(--font-mono);color:#80654d;}.command-icon{border-radius:1px;background:#e5cfa0;color:#9d4234;}.notify-panel{border-radius:2px;border-color:#8e6c45;background:rgba(250,240,211,.96);box-shadow:5px 7px 0 rgba(58,37,18,.23);}.notify-head{font-family:var(--font-mono);color:#38291c;}.notify-head button{color:#9d4234;font-family:var(--font-mono);}.notice{border-radius:1px;background:#f2dfb8;border-color:#c3a575;}.notice-mark{color:#9d4234;}.notice b{color:#372619;font-family:var(--font-display);}.notice p{color:#6b513a;}.context-menu{border-radius:2px;border-color:#785633;background:#f8edcf;box-shadow:4px 6px 0 rgba(60,37,18,.28);}.context-menu button{border-radius:1px;color:#3b2a1b;}.context-menu button:hover{background:#e7cfa0;}.context-menu hr{border-color:#c3a575;}

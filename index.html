@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>ALEX_OS // personal operating system</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=DotGothic16&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="wallpaper">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+<div class="noise"></div>
+
+<!-- ============ BOOT SCREEN ============ -->
+<div id="boot">
+  <div id="boot-log"></div>
+  <div id="boot-bar-track"><div id="boot-bar"></div></div>
+</div>
+
+<!-- ============ TOP BAR ============ -->
+<div id="topbar">
+  <div class="brand"><span class="dot"></span> ALEX / ARCHIVE</div>
+  <div class="right">
+    <button class="icon-btn" id="sound-toggle" title="Toggle sound">🔈 SOUND: OFF</button>
+    <span class="battery-readout" id="battery-readout" title="Battery status"><span class="battery-icon"><i></i></span><b id="battery-pct">86%</b></span>
+    <div class="top-actions"><button class="top-action" id="search-toggle" title="Search apps (Ctrl K)">⌕</button><button class="top-action" id="notify-toggle" title="Notifications">◌</button></div>
+    <span id="clock">--:--:--</span>
+  </div>
+</div>
+
+<!-- ============ DESKTOP ============ -->
+<div id="desktop">
+  <button class="home-search" id="home-search" aria-label="Search the archive"><span>⌕</span><span>Search the archive</span><kbd>Ctrl K</kbd></button>
+  <div id="snap-guide" aria-hidden="true"></div>
+  <div class="icon-grid">
+    <button class="desk-icon" data-app="about"><span class="glyph">🧑‍💻</span><span>About_Me</span></button>
+    <button class="desk-icon" data-app="projects"><span class="glyph">🗂️</span><span>Projects</span></button>
+    <button class="desk-icon" data-app="contact"><span class="glyph">📡</span><span>Contact</span></button>
+    <button class="desk-icon" data-app="terminal"><span class="glyph">⌨️</span><span>Terminal</span></button>
+    <button class="desk-icon" data-app="guestbook"><span class="glyph">📝</span><span>Guestbook</span></button>
+    <button class="desk-icon" data-app="weather"><span class="glyph">⛅</span><span>Weather</span></button>
+    <button class="desk-icon" data-app="map"><span class="glyph">🗺️</span><span>Life_Map</span></button>
+  </div>
+  <aside class="hud" aria-label="System status">
+    <div class="hud-card"><div class="hud-kicker">Field notes</div><div class="hud-value">Making things with care.</div><div class="hud-meta">PERSONAL ARCHIVE / OPEN</div><div class="signal"><i></i><i></i><i></i><i></i></div></div>
+    <div class="hud-card"><div class="hud-kicker">Current record</div><div class="hud-value" style="font-size:16px">Quiet / Focused</div><div class="hud-meta">A PLACE TO KEEP GOOD WORK</div><div class="hud-orb"></div></div>
+  </aside>
+  <section class="home-player" aria-label="Lo-fi player">
+    <div class="player-stamp">ARCHIVE RADIO / 01</div><div class="player-label">LO-FI READING ROOM</div>
+    <div class="player-track"><div class="record-disc" id="record-disc">A</div><div><b id="lofi-title">Afternoon on paper</b><span id="lofi-status">Ready to play · Station 01 / 04</span></div></div>
+    <div class="player-progress"><i id="lofi-progress"></i></div>
+    <div class="player-controls"><button id="lofi-toggle" aria-label="Play lo-fi music">▶</button><span id="lofi-time">00:00 / ∞</span><button id="lofi-next" aria-label="Next lo-fi station">NEXT</button></div>
+    <div class="player-stations" id="player-stations" aria-label="Choose a song"></div>
+    <audio id="lofi-audio" preload="metadata"></audio>
+  </section>
+  <section class="wallpaper-switcher" aria-label="Desktop wallpaper"><div class="wallpaper-label">DESKTOP PAPER</div><div><button class="wallpaper-swatch active" data-paper="parchment" title="Parchment"></button><button class="wallpaper-swatch" data-paper="indigo" title="Indigo paper"></button><button class="wallpaper-swatch" data-paper="moss" title="Moss paper"></button></div></section>
+
+  <!-- ===== WINDOW: ABOUT ===== -->
+  <div class="window" data-win="about" style="width:600px; height:460px; top:60px; left:60px;">
+    <div class="win-titlebar">
+      <div class="traffic"><button class="tf-close" data-action="close"></button><button class="tf-min" data-action="min"></button><button class="tf-max" data-action="max"></button></div>
+      <div class="win-title">about_me.app</div>
+    </div>
+    <div class="win-body" id="about-body"></div>
+    <div class="resize-handle"></div>
+  </div>
+
+  <!-- ===== WINDOW: PROJECTS ===== -->
+  <div class="window" data-win="projects" style="width:680px; height:480px; top:80px; left:120px;">
+    <div class="win-titlebar">
+      <div class="traffic"><button class="tf-close" data-action="close"></button><button class="tf-min" data-action="min"></button><button class="tf-max" data-action="max"></button></div>
+      <div class="win-title">projects.app</div>
+    </div>
+    <div class="win-body">
+      <div class="h-eyebrow">// selected work</div>
+      <div class="h-title">Projects</div>
+      <div class="proj-tabs" id="proj-tabs"></div>
+      <div class="proj-grid" id="proj-grid"></div>
+    </div>
+    <div class="resize-handle"></div>
+  </div>
+
+  <!-- ===== WINDOW: CONTACT ===== -->
+  <div class="window" data-win="contact" style="width:560px; height:480px; top:100px; left:180px;">
+    <div class="win-titlebar">
+      <div class="traffic"><button class="tf-close" data-action="close"></button><button class="tf-min" data-action="min"></button><button class="tf-max" data-action="max"></button></div>
+      <div class="win-title">contact.app</div>
+    </div>
+    <div class="win-body">
+      <div class="h-eyebrow">// let's talk</div>
+      <div class="h-title">Contact & Links <button class="copy-email-btn" id="copy-email-btn">⧉ copy email</button></div>
+      <div class="link-grid" id="link-grid"></div>
+      <form class="msg-form" id="msg-form">
+        <input type="text" id="msg-name" placeholder="Your name" required>
+        <input type="email" id="msg-email" placeholder="Your email" required>
+        <textarea id="msg-text" placeholder="Say something..." required></textarea>
+        <button type="submit">Send message ↗</button>
+      </form>
+    </div>
+    <div class="resize-handle"></div>
+  </div>
+
+  <!-- ===== WINDOW: TERMINAL ===== -->
+  <div class="window" data-win="terminal" style="width:560px; height:400px; top:130px; left:240px;">
+    <div class="win-titlebar">
+      <div class="traffic"><button class="tf-close" data-action="close"></button><button class="tf-min" data-action="min"></button><button class="tf-max" data-action="max"></button></div>
+      <div class="win-title">terminal — type "help"</div>
+    </div>
+    <div class="win-body" style="padding:0;">
+      <div class="term-body" id="term-scroll">
+        <div id="term-log"></div>
+        <div class="term-input-row">
+          <span class="prompt">alex@os</span><span class="muted">:~$</span>
+          <input type="text" id="term-input" autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== WINDOW: GUESTBOOK ===== -->
+  <div class="window" data-win="guestbook" style="width:520px; height:460px; top:150px; left:300px;">
+    <div class="win-titlebar">
+      <div class="traffic"><button class="tf-close" data-action="close"></button><button class="tf-min" data-action="min"></button><button class="tf-max" data-action="max"></button></div>
+      <div class="win-title">guestbook.app</div>
+    </div>
+    <div class="win-body">
+      <div class="h-eyebrow">// leave your mark</div>
+      <div class="h-title">Guestbook</div>
+      <form class="gb-form" id="gb-form">
+        <input type="text" id="gb-name" placeholder="Name" required>
+        <textarea id="gb-msg" placeholder="Leave a note..." required></textarea>
+        <button type="submit">Sign guestbook ✎</button>
+      </form>
+      <div id="gb-list"></div>
+    </div>
+    <div class="resize-handle"></div>
+  </div>
+
+  <!-- ===== WINDOW: WEATHER ===== -->
+  <div class="window" data-win="weather" style="width:520px; height:460px; top:90px; left:340px;">
+    <div class="win-titlebar">
+      <div class="traffic"><button class="tf-close" data-action="close"></button><button class="tf-min" data-action="min"></button><button class="tf-max" data-action="max"></button></div>
+      <div class="win-title">weather.app</div>
+    </div>
+    <div class="win-body">
+      <div class="h-eyebrow">// current conditions</div>
+      <div class="h-title">Weather</div>
+      <div class="wx-hero" id="wx-hero">
+        <div class="wx-left">
+          <div class="wx-emoji" id="wx-emoji">⏳</div>
+          <div>
+            <div class="wx-temp" id="wx-temp">--°</div>
+            <div class="wx-cond" id="wx-cond">Loading...</div>
+          </div>
+        </div>
+        <div class="wx-meta">
+          <div class="wx-loc" id="wx-loc">—</div>
+          <div id="wx-feels">feels like --°</div>
+          <div id="wx-wind">wind -- km/h</div>
+          <div id="wx-humidity">humidity --%</div>
+        </div>
+      </div>
+      <div class="wx-forecast" id="wx-forecast"></div>
+      <div class="wx-actions">
+        <button id="wx-refresh">↻ Refresh</button>
+        <button id="wx-mylocation">📍 Use my location</button>
+      </div>
+      <div class="wx-status" id="wx-status">Showing weather for the location set in CONFIG.weather</div>
+    </div>
+    <div class="resize-handle"></div>
+  </div>
+
+  <!-- ===== WINDOW: LIFE MAP ===== -->
+  <div class="window" data-win="map" style="width:700px; height:500px; top:70px; left:160px;">
+    <div class="win-titlebar">
+      <div class="traffic"><button class="tf-close" data-action="close"></button><button class="tf-min" data-action="min"></button><button class="tf-max" data-action="max"></button></div>
+      <div class="win-title">life_map.app</div>
+    </div>
+    <div class="win-body" style="display:flex; flex-direction:column;">
+      <div class="h-eyebrow">// everywhere it happened</div>
+      <div class="h-title">Life Map</div>
+      <div class="map-wrap">
+        <div class="map-sidebar" id="map-sidebar"></div>
+        <div class="map-canvas-wrap"><div id="life-map"></div></div>
+      </div>
+    </div>
+    <div class="resize-handle"></div>
+  </div>
+</div>
+
+<!-- ============ DOCK ============ -->
+<div id="dock-wrap">
+  <div id="dock">
+    <button class="dock-btn" data-app="about" title="About"><span>🧑‍💻</span><span class="tip">About Me</span></button>
+    <button class="dock-btn" data-app="projects" title="Projects"><span>🗂️</span><span class="tip">Projects</span></button>
+    <button class="dock-btn" data-app="contact" title="Contact"><span>📡</span><span class="tip">Contact</span></button>
+    <button class="dock-btn" data-app="map" title="Life Map"><span>🗺️</span><span class="tip">Life Map</span></button>
+    <button class="dock-btn" data-app="weather" title="Weather"><span>⛅</span><span class="tip">Weather</span></button>
+    <button class="dock-btn" data-app="terminal" title="Terminal"><span>⌨️</span><span class="tip">Terminal</span></button>
+    <button class="dock-btn" data-app="guestbook" title="Guestbook"><span>📝</span><span class="tip">Guestbook</span></button>
+  </div>
+</div>
+
+<canvas id="matrix-canvas"></canvas>
+<div id="toast"></div>
+<div class="search-layer" id="search-layer" aria-hidden="true"><div class="command-box" role="dialog" aria-label="Search apps"><div class="command-input"><span>⌕</span><input id="command-input" autocomplete="off" placeholder="Search applications or type a command"><kbd>ESC</kbd></div><div class="command-results" id="command-results"></div></div></div>
+<aside class="notify-panel" id="notify-panel" aria-label="Notifications"><div class="notify-head">POST &amp; NOTICES <button id="clear-notices">CLEAR</button></div><div id="notice-list"><div class="notice"><span class="notice-mark">✦</span><div><b>Welcome to the archive</b><p>Use Ctrl + K to move through the collection.</p></div></div><div class="notice"><span class="notice-mark">◈</span><div><b>Desk is ready</b><p>All applications are standing by.</p></div></div></div></aside>
+<div class="context-menu" id="context-menu"><button data-context="search">Open command palette</button><button data-context="about">Open profile</button><button data-context="projects">Browse work</button><hr><button data-context="close">Close all windows</button></div>
+
+<script src="js/main.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

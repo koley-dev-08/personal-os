@@ -1,0 +1,10 @@
+/* ---- Guestbook ---- */
+.gb-form{display:flex; gap:10px; margin-bottom:18px; flex-wrap:wrap;}
+.gb-form input, .gb-form textarea{background:var(--glass-strong); border:1px solid var(--hairline); border-radius:12px; padding:9px 12px; color:var(--ink); font-family:var(--font-body); font-size:13px;}
+.gb-form input{flex:1; min-width:140px;}
+.gb-form textarea{width:100%; min-height:60px; resize:vertical;}
+.gb-form button{padding:9px 18px; border-radius:100px; border:none; background:var(--red); color:#fff; font-weight:700; font-size:12.5px;}
+.gb-entry{border:1px solid var(--hairline); background:var(--glass-strong); border-radius:14px; padding:12px 14px; margin-bottom:10px;}
+.gb-entry .gb-head{display:flex; justify-content:space-between; font-family:var(--font-dot); font-size:11px; color:var(--red); margin-bottom:6px;}
+.gb-entry p{font-size:13.5px; color:var(--ink-soft); line-height:1.55;}
+.gb-note{font-size:11px; color:var(--ink-dim); font-family:var(--font-dot); margin-top:2px;}
