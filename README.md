@@ -1,16 +1,4 @@
-<div align="center">
-
-# 🚀 ReshavOS
-
-### A browser-based desktop environment that transforms a personal portfolio into an interactive operating system.
-
-<p>
-  <a href="https://personal-os-pi-neon.vercel.app/"><strong>🌐 Live Demo</strong></a> •
-  <a href="https://github.com/koley-dev-08/personal-os"><strong>📂 Repository</strong></a> •
-  <a href="LICENSE"><strong>📜 MIT License</strong></a>
-</p>
-
-</div>
+![alt text](image-1.png)
 
 ---
 
